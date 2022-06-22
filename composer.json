@@ -1,5 +1,5 @@
 {
-    "name": "zerosdev/nobu-php",
+    "name": "zerosdev/nobubank-php",
     "description": "Nobu Bank API Integration Library for PHP",
     "type": "library",
     "require": {
@@ -10,8 +10,8 @@
     "license": "MIT",
     "homepage": "https://www.nobubank.com/",
     "support": {
-        "issues": "https://github.com/zerosdev/nobu-php/issues",
-        "source": "https://github.com/zerosdev/nobu-php"
+        "issues": "https://github.com/zerosdev/nobubank-php/issues",
+        "source": "https://github.com/zerosdev/nobubank-php"
     },
     "authors": [
         {
