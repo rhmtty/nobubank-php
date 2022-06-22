@@ -1,12 +1,12 @@
-<h1 align="center">nobu-php</h1>
+<h1 align="center">nobubank-php</h1>
 <h6 align="center"></h6>
 
 <p align="center">
-  <img src="https://img.shields.io/github/v/release/zerosdev/nobu-php?include_prereleases" alt="release"/>
-  <img src="https://img.shields.io/github/languages/top/zerosdev/nobu-php" alt="language"/>
-  <img src="https://img.shields.io/github/license/zerosdev/nobu-php" alt="license"/>
-  <img src="https://img.shields.io/github/languages/code-size/zerosdev/nobu-php" alt="size"/>
-  <img src="https://img.shields.io/github/downloads/zerosdev/nobu-php/total" alt="downloads"/>
+  <img src="https://img.shields.io/github/v/release/zerosdev/nobubank-php?include_prereleases" alt="release"/>
+  <img src="https://img.shields.io/github/languages/top/zerosdev/nobubank-php" alt="language"/>
+  <img src="https://img.shields.io/github/license/zerosdev/nobubank-php" alt="license"/>
+  <img src="https://img.shields.io/github/languages/code-size/zerosdev/nobubank-php" alt="size"/>
+  <img src="https://img.shields.io/github/downloads/zerosdev/nobubank-php/total" alt="downloads"/>
   <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="pulls"/>
 </p>
 
@@ -28,7 +28,7 @@ NobuBank::qris()
 ## Installation
 
 1. Run command
-<pre><code>composer require zerosdev/nobu-php</code></pre>
+<pre><code>composer require zerosdev/nobubank-php</code></pre>
 
 ### The following steps only needed if you are using Laravel
 
