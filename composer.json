@@ -1,0 +1,38 @@
+{
+    "name": "zerosdev/nobu-php",
+    "description": "Nobu Bank API Integration Library for PHP",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.5",
+        "php": ">=7.0.0",
+        "ext-json": "*"
+    },
+    "license": "MIT",
+    "homepage": "https://www.nobubank.com/",
+    "support": {
+        "issues": "https://github.com/zerosdev/nobu-php/issues",
+        "source": "https://github.com/zerosdev/nobu-php"
+    },
+    "authors": [
+        {
+            "name": "ZerosDev",
+            "email": "ronywisnuwardana@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "ZerosDev\\NobuBank\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ZerosDev\\NobuBank\\Laravel\\ServiceProvider"
+            ],
+            "aliases": {
+                "NobuBank": "ZerosDev\\NobuBank\\Laravel\\Facade"
+            }
+        }
+    }
+}
