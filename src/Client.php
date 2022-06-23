@@ -38,7 +38,7 @@ class Client
         return $this;
     }
 
-    private function init(string $mode = 'development', array $config)
+    public function init(string $mode = 'development', array $config)
     {
         $this->setConfig($config);
         $this->setMode($mode);
@@ -48,14 +48,20 @@ class Client
         ]);
 
         $self = $this;
-        $this->http = new GuzzleClient([
+        $configs = [
             'base_uri'		=> ($mode === 'production') ? Constant::URL_API_PRODUCTION : Constant::URL_API_DEVELOPMENT,
             'http_errors' 	=> false,
             'headers'		=> $this->getRequestHeaders(),
             'on_stats' => function (TransferStats $s) use (&$self) {
                 $self->setRequestUrl(strval($s->getEffectiveUri()));
             }
-        ]);
+        ];
+
+        if (isset($config['action']) && $config['action'] === 'status') {
+            $configs['base_uri'] = $mode === 'production' ? Constant::URL_STATUS_PRODUCTION : Constant::URL_STATUS_DEVELOPMENT;
+        }
+        
+        $this->http = new GuzzleClient($configs);
     }
 
     public function request($endpoint, $method = 'GET', $content_type = Constant::CONTENT_JSON)

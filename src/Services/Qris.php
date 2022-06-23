@@ -94,7 +94,10 @@ class Qris
             'data' => base64_encode(json_encode($content)),
         ];
 
-        $this->setRequestPayload($payload);
+        $config['action'] = 'status';
+        $this->client->init($this->client->getMode(), $config);
+
+        $this->client->setRequestPayload($payload);
 
         return $this->client->request('api/Partner/InquiryPayment', 'POST', Constant::CONTENT_JSON);
     }
