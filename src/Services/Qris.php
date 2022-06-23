@@ -47,7 +47,7 @@ class QRIS
     }
 
 
-    public function inquiryPaymentStatus()
+    public function paymentStatus()
     {
         $config = $this->client->getConfig();
 
@@ -57,7 +57,7 @@ class QRIS
             'merchantID' => (string) $config['merchant_id'],
             'storeID' => (string) $config['store_id'],
             'posID' => (string) $this->getPosId('A01'),
-            'transactionNO' => (string) $this->getTransactionNo()
+            'transactionNo' => (string) $this->getTransactionNo()
         ];
 
         $content['signature'] = md5(implode('', $content).$config['secret_key']);
@@ -100,7 +100,7 @@ class QRIS
         return $this->client->request('generalNew/Partner/RequestRefundQRIS', 'POST', Constant::CONTENT_JSON);
     }
 
-    public function CancelQris()
+    public function cancel()
     {
         $config = $this->client->getConfig();
 
