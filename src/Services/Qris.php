@@ -37,6 +37,8 @@ class Qris
 
         $content['signature'] = md5(implode('', $content).$config['secret_key']);
 
+        $this->client->setRequestRawPayload($content);
+
         $payload = [
             'data'  => base64_encode(json_encode($content)),
         ];
@@ -66,6 +68,8 @@ class Qris
 
         $content['signature'] = md5(implode('', $content).$config['secret_key']);
 
+        $this->client->setRequestRawPayload($content);
+
         $payload = [
             'data'  => base64_encode(json_encode($content)),
         ];
@@ -89,6 +93,8 @@ class Qris
         ];
 
         $content['signature'] = md5(implode('', $content).$config['secret_key']);
+
+        $this->client->setRequestRawPayload($content);
 
         $payload = [
             'data' => base64_encode(json_encode($content)),
@@ -122,6 +128,8 @@ class Qris
 
         $content['signature'] = md5(implode('', $content).$config['secret_key']);
 
+        $this->client->setRequestRawPayload($content);
+
         $payload = [
             'data' => base64_encode(json_encode($content)),
         ];
@@ -147,6 +155,8 @@ class Qris
         ];
 
         $content['signature'] = md5(implode('', $content) . $config['secret_key']);
+
+        $this->client->setRequestRawPayload($content);
 
         $payload = [
             'data' => base64_encode(json_encode($content)),

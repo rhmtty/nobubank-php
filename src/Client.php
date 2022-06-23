@@ -18,6 +18,7 @@ class Client
     protected $request_url;
     protected $request_method;
     protected $request_payload = [];
+    protected $request_raw_payload = [];
     protected $request_headers = [];
     protected $response;
 
@@ -110,8 +111,10 @@ class Client
     {
         return [
             'mode' => $this->getMode(),
+            'config' => $this->getConfig(),
             'url'	=> $this->getRequestUrl(),
             'method' => $this->getRequestMethod(),
+            'raw_payload' => $this->getRequestRawPayload(),
             'payload' => $this->getRequestPayload(),
             'headers' => $this->getRequestHeaders(),
             'response' => $this->getResponse(),
