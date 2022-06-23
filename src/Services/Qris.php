@@ -6,7 +6,7 @@ use ZerosDev\NobuBank\Client;
 use ZerosDev\NobuBank\Constant;
 use ZerosDev\NobuBank\Traits\SetterGetter;
 
-class QRIS
+class Qris
 {
     use SetterGetter;
 
