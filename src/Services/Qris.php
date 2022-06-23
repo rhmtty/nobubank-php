@@ -45,4 +45,84 @@ class QRIS
 
         return $this->client->request('generalNew/Partner/GetQRISCustomName', 'POST', Constant::CONTENT_JSON);
     }
+
+
+    public function paymentStatus()
+    {
+        $config = $this->client->getConfig();
+
+        $content = [
+            'login' => (string) $config['login'],
+            'password' => (string) $config['password'],
+            'merchantID' => (string) $config['merchant_id'],
+            'storeID' => (string) $config['store_id'],
+            'posID' => (string) $this->getPosId('A01'),
+            'transactionNo' => (string) $this->getTransactionNo()
+        ];
+
+        $content['signature'] = md5(implode('', $content).$config['secret_key']);
+
+        $payload = [
+            'data' => base64_encode(json_encode($content)),
+        ];
+
+        $this->setRequestPayload($payload);
+
+        return $this->client->request('api/Partner/InquiryPayment', 'POST', Constant::CONTENT_JSON);
+    }
+
+    public function refund()
+    {
+        $config = $this->client->getConfig();
+
+        $content = [
+            'login' => (string) $config['login'],
+            'password' => (string) $config['password'],
+            'merchantID' => (string) $config['merchant_id'],
+            'storeID' => (string) $config['store_id'],
+            'posID' => (string) $this->getPosId("A01"),
+            'transactionNo' => (string) $this->getTransactionNo(),
+            'referenceNo' => (string) $this->getReferenceNo(),
+            'amount' => (string) $this->getAmount(),
+            'paymentReferenceNo' => (string) $this->getPaymentReferenceNo(),
+            'issuerID' => (string) $this->getIssuerID(),
+            'retrievalReferenceNo' => (string) $this->getRetrievalReferenceNo(),
+        ];
+
+        $content['signature'] = md5(implode('', $content).$config['secret_key']);
+
+        $payload = [
+            'data' => base64_encode(json_encode($content)),
+        ];
+
+        $this->client->setRequestPayload($payload);
+
+        return $this->client->request('generalNew/Partner/RequestRefundQRIS', 'POST', Constant::CONTENT_JSON);
+    }
+
+    public function cancel()
+    {
+        $config = $this->client->getConfig();
+
+        $content = [
+            'login' => (string) $config['login'],
+            'password' => (string) $config['password'],
+            'merchantID' => (string) $config['merchant_id'],
+            'storeID' => (string) $config['store_id'],
+            'transactionNo' => (string) $this->getTransactionNo(),
+            'referenceNo' => (string) $this->getReferenceNo(),
+            'amount' => (string) $this->getAmount(),
+            'qrisData' => (string) $this->getQrisData(),
+        ];
+
+        $content['signature'] = md5(implode('', $content) . $config['secret_key']);
+
+        $payload = [
+            'data' => base64_encode(json_encode($content)),
+        ];
+
+        $this->client->setRequestPayload($payload);
+
+        return $this->client->request('general/Partner/CancelQRIS', 'POST', Constant::CONTENT_JSON);
+    }
 }
