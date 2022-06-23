@@ -61,7 +61,7 @@ class Client
         if (isset($config['action']) && $config['action'] === 'status') {
             $configs['base_uri'] = $mode === 'production' ? Constant::URL_STATUS_PRODUCTION : Constant::URL_STATUS_DEVELOPMENT;
         }
-        
+
         $this->http = new GuzzleClient($configs);
     }
 
