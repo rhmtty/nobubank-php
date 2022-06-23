@@ -49,7 +49,7 @@ class Client
 
         $self = $this;
         $this->http = new GuzzleClient([
-            'base_uri'		=> $this->config['base_url'],
+            'base_uri'		=> ($mode === 'production') ? Constant::URL_API_PRODUCTION : Constant::URL_API_DEVELOPMENT,
             'http_errors' 	=> false,
             'headers'		=> $this->getRequestHeaders(),
             'on_stats' => function (TransferStats $s) use (&$self) {

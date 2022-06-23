@@ -4,6 +4,9 @@ namespace ZerosDev\NobuBank;
 
 class Constant
 {
+    public const URL_API_DEVELOPMENT = 'http://uatmerchant.nobubank.com:2104/';
+    public const URL_API_PRODUCTION = 'http://uatmerchant.nobubank.com:2104/';
+
     public const MERGE = "merge";
 
     public const TYPE_JSON = "json";

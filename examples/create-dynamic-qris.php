@@ -6,7 +6,6 @@ use ZerosDev\NobuBank\Client;
 
 $mode = 'development';
 $config = [
-    'base_url'      => 'http://uatmerchant.nobubank.com:2104/',
     'login'         => '',
     'password'      => '',
     'merchant_id'   => '',
