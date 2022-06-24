@@ -81,6 +81,7 @@ $config = [
     'password'      => '',
     'merchant_id'   => '',
     'store_id'      => '',
+    'pos_id'        => '',
     'secret_key'    => '',
 ];
 

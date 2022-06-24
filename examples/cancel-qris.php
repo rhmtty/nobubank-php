@@ -39,30 +39,16 @@ $qris = $nobu->qris()
     ->setAmount(1000)
 
     /**
-     * Set QR validity time in seconds
+     * Set QR national dynamic data.
      *
-     * @param int $valid_time
+     * @param string $qris_data
      */
-    ->setValidTime(3600)
-
-    /**
-     * Set displayed store name
-     *
-     * @param string $store_name
-     */
-    ->setStoreName('Zeros Technology')
-
-    /**
-     * Set displayed city name
-     *
-     * @param string $city_name
-     */
-    ->setCityName('Ponorogo')
+    ->setQrisData('xxxxxxxxxxxxxxx')
 
     /**
      * Execute action
      */
-    ->createDynamic();
+    ->cancel();
 
 echo $qris;
 

@@ -62,7 +62,7 @@ $qris = $nobu->qris()
     /**
      * Execute action
      */
-    ->createDynamic();
+    ->createDynamicWithoutTip();
 
 echo $qris;
 

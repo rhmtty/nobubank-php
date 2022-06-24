@@ -32,37 +32,37 @@ $qris = $nobu->qris()
     ->setReferenceNo('1234567890')
 
     /**
-     * Set payment amount
+     * Set refund amount
      *
      * @param int $amount
      */
     ->setAmount(1000)
 
     /**
-     * Set QR validity time in seconds
+     * Set payment transaction reference unique number that needs to be refund.
      *
-     * @param int $valid_time
+     * @param int $payment_reference_no
      */
-    ->setValidTime(3600)
+    ->setPaymentReferenceNo('2022060601010101')
 
     /**
-     * Set displayed store name
+     * Set issuer’s id used by customer to pay the transaction.
      *
-     * @param string $store_name
+     * @param string $issuer_id
      */
-    ->setStoreName('Zeros Technology')
+    ->setIssuerId('Zeros Technology')
 
     /**
-     * Set displayed city name
+     * Set retrieval reference unique number for a specific payment transaction.
      *
-     * @param string $city_name
+     * @param string $retrieval_reference_no
      */
-    ->setCityName('Ponorogo')
+    ->setRetrievalReferenceNo('2022060601010101')
 
     /**
      * Execute action
      */
-    ->createDynamic();
+    ->refund();
 
 echo $qris;
 

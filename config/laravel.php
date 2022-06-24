@@ -16,6 +16,7 @@ return [
         'password'      => env('NOBU_DEV_PASSWORD', ''),
         'merchant_id'   => env('NOBU_DEV_MERCHANT_ID', ''),
         'store_id'      => env('NOBU_DEV_STORE_ID', ''),
+        'pos_id'        => env('NOBU_DEV_POS_ID', ''),
         'secret_key'    => env('NOBU_DEV_SECRET_KEY', ''),
     ],
 
@@ -27,6 +28,7 @@ return [
         'password'      => env('NOBU_PASSWORD', ''),
         'merchant_id'   => env('NOBU_MERCHANT_ID', ''),
         'store_id'      => env('NOBU_STORE_ID', ''),
+        'pos_id'        => env('NOBU_POS_ID', ''),
         'secret_key'    => env('NOBU_SECRET_KEY', ''),
     ]
 
