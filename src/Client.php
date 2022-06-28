@@ -70,7 +70,7 @@ class Client
                 case 'status':
                     $endpoint = (($this->getMode() === 'production') ? Constant::URL_STATUS_PRODUCTION : Constant::URL_STATUS_DEVELOPMENT).$endpoint;
                     break;
-                
+
                 case 'cancel':
                     $endpoint = (($this->getMode() === 'production') ? Constant::URL_CANCEL_PRODUCTION : Constant::URL_CANCEL_DEVELOPMENT).$endpoint;
                     break;
