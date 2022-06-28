@@ -58,16 +58,24 @@ class Client
             }
         ];
 
-        if (isset($config['action']) && $config['action'] === 'status') {
-            $configs['base_uri'] = $mode === 'production' ? Constant::URL_STATUS_PRODUCTION : Constant::URL_STATUS_DEVELOPMENT;
-        }
-
         $this->http = new GuzzleClient($configs);
     }
 
     public function request($endpoint, $method = 'GET', $content_type = Constant::CONTENT_JSON)
     {
         $method = strtolower($method);
+
+        if ($this->getUseBaseUrl()) {
+            switch ($this->getUseBaseUrl()) {
+                case 'status':
+                    $endpoint = (($this->getMode() === 'production') ? Constant::URL_STATUS_PRODUCTION : Constant::URL_STATUS_DEVELOPMENT).$endpoint;
+                    break;
+                
+                case 'cancel':
+                    $endpoint = (($this->getMode() === 'production') ? Constant::URL_CANCEL_PRODUCTION : Constant::URL_CANCEL_DEVELOPMENT).$endpoint;
+                    break;
+            }
+        }
 
         $this->setRequestEndpoint($endpoint);
         $this->setRequestMethod(strtoupper($method));
@@ -89,6 +97,7 @@ class Client
         }
 
         try {
+            $this->setExecutionTime(date('c'));
             $response = $this->http->{$method}($endpoint, $options)
                 ->getBody()
                 ->getContents();
@@ -110,6 +119,7 @@ class Client
     public function debugs()
     {
         return [
+            'time' => $this->getExecutionTime(),
             'mode' => $this->getMode(),
             'config' => $this->getConfig(),
             'url'	=> $this->getRequestUrl(),
