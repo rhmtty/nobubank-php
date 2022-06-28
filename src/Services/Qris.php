@@ -100,9 +100,7 @@ class Qris
             'data' => base64_encode(json_encode($content)),
         ];
 
-        $config['action'] = 'status';
-        $this->client->init($this->client->getMode(), $config);
-
+        $this->client->setUseBaseUrl('status');
         $this->client->setRequestPayload($payload);
 
         return $this->client->request('api/Partner/InquiryPayment', 'POST', Constant::CONTENT_JSON);
@@ -162,6 +160,7 @@ class Qris
             'data' => base64_encode(json_encode($content)),
         ];
 
+        $this->client->setUseBaseUrl('cancel');
         $this->client->setRequestPayload($payload);
 
         return $this->client->request('general/Partner/CancelQRIS', 'POST', Constant::CONTENT_JSON);
