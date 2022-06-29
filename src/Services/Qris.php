@@ -120,7 +120,7 @@ class Qris
             'referenceNo' => (string) $this->getReferenceNo(),
             'amount' => (string) $this->getAmount(),
             'paymentReferenceNo' => (string) $this->getPaymentReferenceNo(),
-            'issuerID' => (string) $this->getIssuerID(),
+            'issuerID' => (string) $this->getIssuerId(),
             'retrievalReferenceNo' => (string) $this->getRetrievalReferenceNo(),
         ];
 
