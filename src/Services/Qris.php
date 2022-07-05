@@ -30,12 +30,12 @@ class Qris
             'transactionNo' => (string) $this->getTransactionNo(),
             'referenceNo' => (string) $this->getReferenceNo(),
             'amount' => (int) $this->getAmount(),
-            'validTime' => (int) $this->getValidTime(3600), // seconds
+            'validTime' => (int) $this->getValidTime(3600), // in seconds
             'storeName' => (string) $this->getStoreName(),
             'cityName' => (string) $this->getCityName(),
         ];
 
-        $content['signature'] = md5(implode('', $content).$config['secret_key']);
+        $content['signature'] = md5(implode('', array_values($content)) . $config['secret_key']);
 
         $this->client->setRequestRawPayload($content);
 
@@ -66,7 +66,7 @@ class Qris
             'cityName' => (string) $this->getCityName(),
         ];
 
-        $content['signature'] = md5(implode('', $content).$config['secret_key']);
+        $content['signature'] = md5(implode('', array_values($content)) . $config['secret_key']);
 
         $this->client->setRequestRawPayload($content);
 
@@ -92,7 +92,7 @@ class Qris
             'transactionNo' => (string) $this->getTransactionNo()
         ];
 
-        $content['signature'] = md5(implode('', $content).$config['secret_key']);
+        $content['signature'] = md5(implode('', array_values($content)) . $config['secret_key']);
 
         $this->client->setRequestRawPayload($content);
 
@@ -124,7 +124,7 @@ class Qris
             'retrievalReferenceNo' => (string) $this->getRetrievalReferenceNo(),
         ];
 
-        $content['signature'] = md5(implode('', $content).$config['secret_key']);
+        $content['signature'] = md5(implode('', array_values($content)) . $config['secret_key']);
 
         $this->client->setRequestRawPayload($content);
 
@@ -152,7 +152,7 @@ class Qris
             'qrisData' => (string) $this->getQrisData(),
         ];
 
-        $content['signature'] = md5(implode('', $content) . $config['secret_key']);
+        $content['signature'] = md5(implode('', array_values($content)) . $config['secret_key']);
 
         $this->client->setRequestRawPayload($content);
 
