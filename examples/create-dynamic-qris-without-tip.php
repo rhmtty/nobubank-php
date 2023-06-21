@@ -6,15 +6,25 @@ use ZerosDev\NobuBank\Client;
 
 $mode = 'development';
 $config = [
-    'login'         => '',
-    'password'      => '',
-    'merchant_id'   => '',
-    'store_id'      => '',
-    'pos_id'        => '',
-    'secret_key'    => '',
+    'development' => [
+        'login'         => '',
+        'password'      => '',
+        'merchant_id'   => '',
+        'store_id'      => '',
+        'pos_id'        => '',
+        'secret_key'    => '',
+    ],
+    'production' => [
+        'login'         => '',
+        'password'      => '',
+        'merchant_id'   => '',
+        'store_id'      => '',
+        'pos_id'        => '',
+        'secret_key'    => '',
+    ]
 ];
 
-$nobu = new Client($mode, $config);
+$nobu = new Client($mode, $config[$mode]);
 
 $qris = $nobu->qris()
     /**
@@ -22,14 +32,14 @@ $qris = $nobu->qris()
      *
      * @param string $transaction_no
      */
-    ->setTransactionNo('ABCDEFGHIJKLMNO')
+    ->setTransactionNo('LOCALTEST001')
 
     /**
      * Set reference number
      *
      * @param string $reference_no
      */
-    ->setReferenceNo('1234567890')
+    ->setReferenceNo('100LOCALTEST')
 
     /**
      * Set payment amount
@@ -60,13 +70,27 @@ $qris = $nobu->qris()
     ->setCityName('Ponorogo')
 
     /**
+     * Set Store ID / MPAN (Defaults to config di ENV if not specified)
+     *
+     * @param string $store_id
+     */
+    ->setStoreId('ID2023123456789')
+
+    /**
+     * Set Store ID / NMID (Defaults to config di ENV if not specified)
+     *
+     * @param string $merchant_id
+     */
+    ->setMerchantId('930000000000000000')
+
+    /**
      * Execute action
      */
     ->createDynamicWithoutTip();
 
-echo $qris;
+// echo $qris;
 
 /**
  * For debugging purpose
  */
-// print_r($nobu->debugs());
+print_r($nobu->debugs());

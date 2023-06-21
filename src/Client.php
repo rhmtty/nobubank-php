@@ -22,7 +22,7 @@ class Client
     protected $request_headers = [];
     protected $response;
 
-    public function __construct(string $mode = 'development', array $config)
+    public function __construct(string $mode = 'development', array $config = [])
     {
         $this->init($mode, $config);
     }
@@ -32,14 +32,14 @@ class Client
         return $this;
     }
 
-    public function useCredential(string $mode = 'development', array $config)
+    public function useCredential(string $mode = 'development', array $config = [])
     {
         $this->init($mode, $config);
 
         return $this;
     }
 
-    public function init(string $mode = 'development', array $config)
+    public function init(string $mode = 'development', array $config = [])
     {
         $this->setConfig($config);
         $this->setMode($mode);

@@ -24,15 +24,15 @@ class Qris
         $content = [
             'login' => (string) $config['login'],
             'password' => (string) $config['password'],
-            'merchantID' => (string) $config['merchant_id'],
-            'storeID' => (string) $config['store_id'],
+            'merchantID' => (string) $this->getMerchantId($config['store_id']),
+            'storeID' => (string) $this->getStoreId($config['store_id']),
             'posID' => (string) $this->getPosId("A01"),
             'transactionNo' => (string) $this->getTransactionNo(),
             'referenceNo' => (string) $this->getReferenceNo(),
             'amount' => (int) $this->getAmount(),
             'validTime' => (int) $this->getValidTime(3600), // in seconds
-            'storeName' => (string) $this->getStoreName(),
-            'cityName' => (string) $this->getCityName(),
+            // 'storeName' => (string) $this->getStoreName(), // unused in nobu spec v2.0
+            // 'cityName' => (string) $this->getCityName(), // unused in nobu spec v2.0
         ];
 
         $content['signature'] = md5(implode('', array_values($content)) . $config['secret_key']);
@@ -45,7 +45,10 @@ class Qris
 
         $this->client->setRequestPayload($payload);
 
-        return $this->client->request('generalNew/Partner/GetQRISCustomName', 'POST', Constant::CONTENT_JSON);
+        // $endpoint = 'generalNew/Partner/GetQRISCustomName'; // endpoint in nobu spec v1.0
+        $endpoint = 'generalNew/Partner/GetQRISSinglePayment'; // endpoint in nobu spec v2.0
+
+        return $this->client->request($endpoint, 'POST', Constant::CONTENT_JSON);
     }
 
     public function createDynamicWithoutTip()
@@ -55,15 +58,15 @@ class Qris
         $content = [
             'login' => (string) $config['login'],
             'password' => (string) $config['password'],
-            'merchantID' => (string) $config['merchant_id'],
-            'storeID' => (string) $config['store_id'],
-            'posID' => (string) $this->getPosId("A01"),
+            'merchantID' => (string) $this->getMerchantId($config['store_id']),
+            'storeID' => (string) $this->getStoreId($config['store_id']),
+            'posID' => (string) $this->getPosId('A01'),
             'transactionNo' => (string) $this->getTransactionNo(),
             'referenceNo' => (string) $this->getReferenceNo(),
             'amount' => (int) $this->getAmount(),
-            'validTime' => (int) $this->getValidTime(3600), // seconds
-            'storeName' => (string) $this->getStoreName(),
-            'cityName' => (string) $this->getCityName(),
+            'validTime' => (int) $this->getValidTime(3600), // in seconds
+            // 'storeName' => (string) $this->getStoreName(), // unused in nobu spec v2.0
+            // 'cityName' => (string) $this->getCityName(), // unused in nobu spec v2.0
         ];
 
         $content['signature'] = md5(implode('', array_values($content)) . $config['secret_key']);
@@ -76,7 +79,10 @@ class Qris
 
         $this->client->setRequestPayload($payload);
 
-        return $this->client->request('generalNew/Partner/GetQRISCustomNameWithoutTip', 'POST', Constant::CONTENT_JSON);
+        // $endpoint = 'generalNew/Partner/GetQRISCustomNameWithoutTip'; // endpoint in nobu spec v1.0
+        $endpoint = 'generalNew/Partner/GetQRISSinglePaymentWithoutTip'; // endpoint in nobu spec v2.0
+
+        return $this->client->request($endpoint, 'POST', Constant::CONTENT_JSON);
     }
 
     public function paymentStatus()
