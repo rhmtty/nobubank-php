@@ -24,7 +24,7 @@ class Qris
         $content = [
             'login' => (string) $config['login'],
             'password' => (string) $config['password'],
-            'merchantID' => (string) $this->getMerchantId($config['store_id']),
+            'merchantID' => (string) $this->getMerchantId($config['merchant_id']),
             'storeID' => (string) $this->getStoreId($config['store_id']),
             'posID' => (string) $this->getPosId("A01"),
             'transactionNo' => (string) $this->getTransactionNo(),
@@ -58,7 +58,7 @@ class Qris
         $content = [
             'login' => (string) $config['login'],
             'password' => (string) $config['password'],
-            'merchantID' => (string) $this->getMerchantId($config['store_id']),
+            'merchantID' => (string) $this->getMerchantId($config['merchant_id']),
             'storeID' => (string) $this->getStoreId($config['store_id']),
             'posID' => (string) $this->getPosId('A01'),
             'transactionNo' => (string) $this->getTransactionNo(),
